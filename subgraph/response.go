@@ -110,6 +110,22 @@ func (r Response) ToString() string {
 	return fmt.Sprintf("Response \nRequestID: %v, \nStatus: {%#v}, \nResult: {%#v}\n", r.RequestID, r.Status, r.Result)
 }
 
+// CountVertices returns the number of Edges in the SubGraph
+func (subgraph *NeptuneSubGraph) CountVertices() int64 {
+	if len(subgraph.Value) == 0 {
+		return 0
+	}
+	return int64(len(subgraph.Value[0].Value.Vertices))
+}
+
+// CountEdges returns the number of Edges in the SubGraph
+func (subgraph *NeptuneSubGraph) CountEdges() int {
+	if len(subgraph.Value) == 0 {
+		return 0
+	}
+	return len(subgraph.Value[0].Value.Edges)
+}
+
 func (c *Client) handleResponse(msg []byte) (err error) {
 	resp := Response{}
 	err = json.Unmarshal(msg, &resp)
