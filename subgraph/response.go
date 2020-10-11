@@ -43,15 +43,15 @@ type Vertex struct {
 }
 
 // Group struct
-type Group struct {
+type EdgePropertyValue struct {
 	Type  string            `json:"@type"`
 	Value map[string]string `json:"@value"`
 }
 
 // EdgeProperty represents an edge property
-type EdgeProperty struct {
-	Group Group
-}
+//type EdgeProperty struct {
+//	Group Group
+//}
 
 // EdgeValue represents a vertex value
 type EdgeValue struct {
@@ -59,7 +59,9 @@ type EdgeValue struct {
 	Label      string
 	InV        string
 	OutV       string
-	Properties EdgeProperty
+	InVLabel   string
+	OutVLabel  string
+	Properties map[string]EdgePropertyValue
 }
 
 // Edge represents a vertex returned by the graph database
