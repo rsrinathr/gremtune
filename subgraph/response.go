@@ -49,9 +49,9 @@ type EdgePropertyValue struct {
 }
 
 // EdgeProperty represents an edge property
-//type EdgeProperty struct {
-//	Group Group
-//}
+type EdgeProperty struct {
+	Properties map[string]EdgePropertyValue
+}
 
 // EdgeValue represents a vertex value
 type EdgeValue struct {
@@ -61,7 +61,7 @@ type EdgeValue struct {
 	OutV       string
 	InVLabel   string
 	OutVLabel  string
-	Properties map[string]EdgePropertyValue
+	Properties EdgeProperty
 }
 
 // Edge represents a vertex returned by the graph database
